@@ -23,3 +23,27 @@ def cleanup_temp_files():
   st.session_state['audio path'] -None
   if 'yt_error' in st.session_state:
     del st.session_state['yt_error']
+
+def download_youtube_audio(url)
+   audio_opts={
+     'format': 'bestaudio/best',
+     'outtmpl': 'temp_audio.%(ext)s',
+     'http_headers': {
+       "'user-Agent': mozilla/5.0 (windows NT 10.0; Win64; x64)Applewebkit/537.369(KHTML,like Gecko)chrome/12
+       'accept': '*/*,
+       'referer': 'https://www.google.com/',
+     },
+     'postprocessors':[{
+       'key': FFmpegExtractAudio',
+       'preferredcodec': '192',
+     }],
+   }
+with yt_dlp.youtubeDL(audio_opts) as ydl:
+  ydl.dowload([url])
+ return "temp_audio.mp3"
+
+def handle_youtube_download|(url):
+  """callback function to ensure session state presistss after button click.""""
+  try:
+    if 'yt_error' in st.session_state:
+      del st session state['yt
